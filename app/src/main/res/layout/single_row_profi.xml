@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    android:elevation="12dp"
+    android:layout_margin="4dp">
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/BtxtNomeProfi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NomeProfi"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/BtxtFuncao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Funcao" />
+
+            <TextView
+                android:id="@+id/BtxDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descrição:" />
+
+            <TextView
+                android:id="@+id/BtxFoneProfi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fone" /><![CDATA[
+
+
+
+            "/>
+
+
+
+
+        ]]>
+        </LinearLayout>
+
+
+        <!-- <ImageView
+             android:id="@+id/visualizar"
+             android:layout_width="23dp"
+             android:layout_height="21dp"
+             android:layout_marginTop="18dp"
+              app:srcCompat="@drawable/visibility"-->
+        />
+    </TableRow>
+</androidx.cardview.widget.CardView>

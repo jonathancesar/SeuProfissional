@@ -4,17 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.BuscarProfisisonal.BuscarProfiFragment">
-
+    tools:context="activity.VisualizarProfi">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="396dp"
-        android:layout_height="724dp"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="16dp">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-
+        android:id="@+id/recyclervisuProfi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,11 +15,12 @@
         android:id="@+id/nav_pesqProfi"
         android:name="com.example.seuprofissional.ui.BuscarProfisisonal.BuscarProfiFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_buscar_profi" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.seuprofissional.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/visualizar"
+        android:name="activity.VisualizarProfi"
+        android:label="Visu Profi"
+        tools:layout="@layout/activity_visualizar_profi"/>
+
 </navigation>

@@ -2,17 +2,19 @@
     <string name="app_name">SeuProfissional</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Seu Profissional</string>
+
+    <string name="nav_header_subtitle"></string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_sair">Sair</string>
 
     <string name="menu_home">Início</string>
     <string name="menu_gallery">Buscar Profissional</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_slideshow">Em Construção</string>
     <string name="menu_sair">Sair</string>
     <string name="cadastro_profissional">Cadastro Profissional</string>
     <string name="email">email</string>
     <string name="funcao">funcao</string>
+    <string name="Visualizar_profissional">visualizar</string>
 
 </resources>

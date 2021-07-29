@@ -38,7 +38,7 @@ public class MainActivityProfissional extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view_profi);
 
         //Adiciona as telas de navegação do menu mobile_navigation_user
-        mAppBarConfiguration = new AppBarConfiguration.Builder( R.id.nav_slideshow)
+        mAppBarConfiguration = new AppBarConfiguration.Builder( R.id.nav_emConstru)
                 .setDrawerLayout(drawer)
                 .build();
         //Configura área que irá carregar os fragmetnos

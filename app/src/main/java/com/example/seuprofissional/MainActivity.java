@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Adiciona as telas de navegação do menu mobile_navigation_user
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_inicio, R.id.nav_pesqProfi, R.id.nav_slideshow)
+                R.id.nav_inicio, R.id.nav_pesqProfi, R.id.nav_emConstru)
                 .setDrawerLayout(drawer)
                 .build();
         //Configura área que irá carregar os fragmetnos

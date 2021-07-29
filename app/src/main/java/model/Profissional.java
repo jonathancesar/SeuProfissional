@@ -24,14 +24,14 @@ public class Profissional implements Serializable {
     public Profissional() {
     }
 
-    private Profissional(String nomeprofi,String apelidoprofi, String emailprofi, String senhaprofi,String foneprofi, String Funcao, String Descricao,String Seg, String Ter, String Quar, String Quin,String Sex,String Sab,String Dom){
+    private Profissional(String nomeprofi,String apelidoprofi, String emailprofi, String senhaprofi,String foneprofi, String funcao, String descricao,String Seg, String Ter, String Quar, String Quin,String Sex,String Sab,String Dom){
         this.nomeProfi = nomeprofi;
         this.ApelidoProfi = apelidoprofi;
         this.emailProfi = emailprofi;
         this.senhaProfi = senhaprofi;
         this.foneProfi = foneprofi;
-        this.funcao = Funcao;
-        this.descricao = Descricao;
+        this.funcao = funcao;
+        this.descricao = descricao;
         this.seg = Seg;
         this.ter = Ter;
         this.quar = Quar;
@@ -42,8 +42,7 @@ public class Profissional implements Serializable {
     }
 
 
-
-    public void salvar() {
+   public void salvar() {
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
         DatabaseReference profissionalRef = firebaseRef.child("Profissional").child(getId());
         profissionalRef.setValue(this);
@@ -169,4 +168,8 @@ public class Profissional implements Serializable {
         this.dom = dom;
     }
 }
+
+
+
+
 

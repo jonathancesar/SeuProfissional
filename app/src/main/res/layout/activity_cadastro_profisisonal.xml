@@ -11,7 +11,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         tools:context="activity.CadastroProfisisonal">
 
         <TextView
@@ -82,7 +81,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtEmailUser" />
 
-        <EditText
+
+        <com.santalu.maskedittext.MaskEditText
             android:id="@+id/edtFoneProfi"
             android:layout_width="358dp"
             android:layout_height="51dp"
@@ -93,6 +93,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.698"
             app:layout_constraintStart_toStartOf="parent"
+            app:met_mask="+55(##)##### ####"
             app:layout_constraintTop_toBottomOf="@+id/edtSenhaUser" />
 
 

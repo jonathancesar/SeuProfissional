@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -34,10 +36,18 @@ public class CadastroProfisisonal extends AppCompatActivity {
 
     private EditText edtNomeCompletoProfi, edtApelidoProfi,edtEmailProfi, edtSenhaProfi, edtFoneProfi,  edtFuncao, edtdescricao;
     private Button btnCadastrarProfi;
-    private CheckBox checkSeg,checkTer,checkQuar,checkQuin,checkSex,checkSab,checkDom;
+    private CheckBox checkSeg;
+    private CheckBox checkTer;
+    private CheckBox checkQuar;
+    private CheckBox checkQuin;
+    private CheckBox checkSex;
+    private CheckBox checkSab;
+    private CheckBox checkDom;
     private Profissional profissional;
     private FirebaseAuth autenticacao;
     private FirebaseFirestore fStore;
+    private DatabaseReference reference;
+    private FirebaseDatabase database;
     int i = 0;
 
 
@@ -49,6 +59,7 @@ public class CadastroProfisisonal extends AppCompatActivity {
         inicializarComponentes();
         autenticacao = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        reference = database.getInstance().getReference().child("Profissional");
 
 
 
@@ -63,41 +74,63 @@ public class CadastroProfisisonal extends AppCompatActivity {
                 String txtfuncaoProfi = edtFuncao.getText().toString();
                 String txtDescricaoProfi = edtdescricao.getText().toString();
 
-                String CheckSeg = checkSeg.getText().toString();
-                String CheckTer = checkTer.getText().toString();
-                String CheckQuar = checkQuar.getText().toString();
-                String CheckQuin = checkQuin.getText().toString();
-                String CheckSex = checkSex.getText().toString();
-                String CheckSab = checkSab.getText().toString();
-                String CheckDom = checkDom.getText().toString();
+                String CheckSegu = checkSeg.getText().toString();
+                String CheckTerc = checkTer.getText().toString();
+                String CheckQuart = checkQuar.getText().toString();
+                String CheckQuint = checkQuin.getText().toString();
+                String CheckSext = checkSex.getText().toString();
+                String CheckSaba = checkSab.getText().toString();
+                String CheckDomi = checkDom.getText().toString();
+
                 if (!txtnomeProfi.isEmpty()) {
                     if (!txtApelidoProfi.isEmpty()) {
+                        if(!txtfuncaoProfi.isEmpty()){
                         if (!txtemailProfi.isEmpty()) {
+                            if(!txtsenhaProfi.isEmpty()){
                             profissional = new Profissional();
                             profissional.setNomeProfi(txtnomeProfi);
                             profissional.setApelidoProfi(txtApelidoProfi);
                             profissional.setEmailProfi(txtemailProfi);
                             profissional.setSenhaProfi(txtsenhaProfi);
                             profissional.setFoneProfi(txtfoneProfi);
+                            profissional.setFuncao(txtfuncaoProfi);
                             profissional.setDescricao(txtDescricaoProfi);
+                            profissional.setSeg(CheckSegu);
+                            profissional.setTer(CheckTerc);
+                            profissional.setQuar(CheckQuart);
+                            profissional.setQuin(CheckQuint);
+                            profissional.setSex(CheckSext);
+                            profissional.setSab(CheckSaba);
+                            profissional.setDom(CheckDomi);
                             cadastrar(profissional);
 
                             //MENSAGEM PARA COLOCAR: "Preencha a descrição do profisisonal!" e Preencha a função do profissional
 
+                        } else {
+                                Toast.makeText(CadastroProfisisonal.this,
+                                        "Preencha a senha!",
+                                        Toast.LENGTH_SHORT).show();
+                         }
 
                         } else {
                             Toast.makeText(CadastroProfisisonal.this,
-                                    "Preencha a senha!",
+                                    "Preencha o email!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        } else {
+                            Toast.makeText(CadastroProfisisonal.this,
+                                    "Preencha a função!",
                                     Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(CadastroProfisisonal.this,
-                                "Preencha o E-mail!",
+                                "Preencha o apelido!",
                                 Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(CadastroProfisisonal.this,
-                            "Preencha o nome!",
+                            "Preencha o nome completo!",
                             Toast.LENGTH_SHORT).show();
                 }
 
@@ -158,32 +191,32 @@ public class CadastroProfisisonal extends AppCompatActivity {
                                 userInfo.put("Descricao",edtdescricao.getText().toString());
 
                                 if(checkSeg.isChecked()){
-                                    userInfo.put("Segunda:",checkSeg.getText().toString());
+                                    userInfo.put("Segunda",checkSeg.getText().toString());
 
                                 }else{
 
                                 }if(checkTer.isChecked()){
-                                    userInfo.put("Terça:",checkTer.getText().toString());
+                                    userInfo.put("Terça",checkTer.getText().toString());
 
                                 }else{
 
                                 }if(checkQuar.isChecked()){
-                                    userInfo.put("Quarta:",checkQuar.getText().toString());
+                                    userInfo.put("Quarta",checkQuar.getText().toString());
 
                                 }else{
 
                                 }if(checkQuin.isChecked()){
-                                    userInfo.put("Quinta:",checkQuin.getText().toString());
+                                    userInfo.put("Quinta",checkQuin.getText().toString());
 
                                 }else{
 
                                 }if(checkSex.isChecked()){
-                                    userInfo.put("Sexta:",checkSex.getText().toString());
+                                    userInfo.put("Sexta",checkSex.getText().toString());
 
                                 }else{
 
                                 }if(checkSeg.isChecked()){
-                                    userInfo.put("Sábado",checkSeg.getText().toString());
+                                    userInfo.put("Sabado",checkSeg.getText().toString());
 
                                 }else{
 
@@ -194,15 +227,14 @@ public class CadastroProfisisonal extends AppCompatActivity {
 
                                 }
 
-
                                 //especificando o usuário
                                 userInfo.put("Profissional","2");
-                                df.set(userInfo);
+                                df.set(userInfo); // adiciona dados SOMENTE no firestore
 
 
                                 String idUsario = task.getResult().getUser().getUid();
-                                profissional.setId(idUsario);
-                                profissional.salvar();
+                               profissional.setId(idUsario); //adiciona SOMENTE no REALTIME
+                               profissional.salvar();
 
                                 Toast.makeText(CadastroProfisisonal.this,
                                         "Cadastro realizado com sucesso",
@@ -241,4 +273,9 @@ public class CadastroProfisisonal extends AppCompatActivity {
         );
 
     }
+
+
+
 }
+
+

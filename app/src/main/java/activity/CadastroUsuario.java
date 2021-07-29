@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.santalu.maskedittext.MaskEditText;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +32,8 @@ import model.Usuario;
 
 public class CadastroUsuario extends AppCompatActivity {
 
-    private EditText edtNomeCompleto, edtEmail, edtSenha, edtFone;
+    private EditText edtNomeCompleto, edtEmail, edtSenha;
+    private MaskEditText edtFone;
     private Button botaoCadastrar;
     private ProgressBar progressbar;
     private Usuario usuario;
@@ -50,29 +52,27 @@ public class CadastroUsuario extends AppCompatActivity {
 
         //CADASTRAR USUÁRIO
 
-        progressbar.setVisibility(View.GONE);
+
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressbar.setVisibility(View.VISIBLE);
+
                 String txtNome = edtNomeCompleto.getText().toString();
                 String txtEmail = edtEmail.getText().toString();
-                String txtSenha = edtSenha.getText().toString();
                 String txtFone = edtFone.getText().toString();
+                String txtSenha = edtSenha.getText().toString();
+
 
 
                 if (!txtNome.isEmpty()) {
-                    if (!txtFone.isEmpty()) {
                     if (!txtEmail.isEmpty()) {
-                        if (!txtSenha.isEmpty()) {
-
-
+                        if (!txtFone.isEmpty()) {
+                            if (!txtSenha.isEmpty()) {
                                 usuario = new Usuario();
                                 usuario.setNome(txtNome);
-
                                 usuario.setEmail(txtEmail);
-                                usuario.setSenha(txtSenha);
                                 usuario.setFone(txtFone);
+                                usuario.setSenha(txtSenha);
                                 cadastrar(usuario);
 
                             } else {
@@ -82,12 +82,12 @@ public class CadastroUsuario extends AppCompatActivity {
                             }
                         } else {
                             Toast.makeText(CadastroUsuario.this,
-                                    "Preencha o E-mail!",
+                                    "Preencha o Telefone!",
                                     Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(CadastroUsuario.this,
-                                "Preencha o nome telefone!",
+                                "Preencha o e-mail",
                                 Toast.LENGTH_SHORT).show();
                     }
 
@@ -101,6 +101,8 @@ public class CadastroUsuario extends AppCompatActivity {
         });
 
 
+
+
     }
 
     private void inicializarComponentes() {
@@ -110,7 +112,7 @@ public class CadastroUsuario extends AppCompatActivity {
         edtSenha = findViewById(R.id.edtSenhaUser);
         edtFone = findViewById(R.id.edtFone);
         botaoCadastrar = findViewById(R.id.btnCadastrar);
-        progressbar = findViewById(R.id.progressBarCadastro);
+
         edtEmail.requestFocus();
 
     }
@@ -119,7 +121,7 @@ public class CadastroUsuario extends AppCompatActivity {
     //MÉTODO PARA CADASTRAR USUÁRIO
     public void cadastrar(Usuario usuario) {
 
-        progressbar.setVisibility(View.GONE);
+
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(
                 usuario.getEmail(),
@@ -132,7 +134,7 @@ public class CadastroUsuario extends AppCompatActivity {
 
                                     try {
 
-                                        progressbar.setVisibility(View.GONE);
+
 
                                         //Salvar dados no firebase e FS
                                         FirebaseUser user = autenticacao.getCurrentUser();

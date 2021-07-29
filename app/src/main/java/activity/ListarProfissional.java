@@ -29,6 +29,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import model.Profissional;
@@ -43,7 +44,7 @@ public class ListarProfissional extends AppCompatActivity {
 
 
     private FirestoreRecyclerAdapter adapter;
-    // private AdapterPesquisa adapterPesquisa;
+    // private MyadapterPesquisa adapterPesquisa;
 
     private ArrayList<Profissional> listaProfissional;
     private DatabaseReference profissionalRef;
@@ -64,8 +65,11 @@ public class ListarProfissional extends AppCompatActivity {
         autenticacao = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
+
+
+
 //TALVEZ FUNCIONE
-        fStore.collection("Profissional").get()
+       fStore.collection("Profissional").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
